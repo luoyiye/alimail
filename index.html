@@ -3,38 +3,292 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>我的 Cloudflare 网页</title>
+  <title>阿里邮箱 - 企业版</title>
   <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-      color: white;
-      text-align: center;
-      padding: 60px 20px;
+    * {
       margin: 0;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      padding: 0;
+      box-sizing: border-box;
     }
-    h1 {
+
+    body {
+      font-family: "Microsoft YaHei", sans-serif;
+      background-color: #f5f7fa;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .header {
+      background: white;
+      padding: 15px 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #e60012;
+    }
+
+    .logo span {
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: flex-end;
+      gap: 20px;
+      font-size: 0.9rem;
+      margin-top: 5px;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #666;
+      transition: color 0.2s;
+    }
+
+    .nav a:hover {
+      color: #e60012;
+    }
+
+    .main {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      min-height: 600px;
+    }
+
+    .left {
+      flex: 1;
+      text-align: center;
+    }
+
+    .left h1 {
       font-size: 2.5rem;
+      color: #e60012;
+      margin-bottom: 10px;
+    }
+
+    .left p {
+      font-size: 1.2rem;
+      color: #333;
       margin-bottom: 20px;
     }
-    p {
-      font-size: 1.2rem;
-      opacity: 0.9;
+
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background: #0066cc;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      transition: background 0.2s;
     }
-    .footer {
-      margin-top: 40px;
+
+    .btn:hover {
+      background: #0052a3;
+    }
+
+    .right {
+      width: 360px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      padding: 30px;
+    }
+
+    .tabs {
+      display: flex;
+      border-bottom: 1px solid #eee;
+      margin-bottom: 20px;
+    }
+
+    .tab {
+      padding: 10px 20px;
+      cursor: pointer;
       font-size: 0.9rem;
-      opacity: 0.7;
+      color: #666;
+      border-bottom: 2px solid transparent;
+    }
+
+    .tab.active {
+      color: #e60012;
+      border-bottom: 2px solid #e60012;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+
+    .checkbox {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 15px;
+    }
+
+    .checkbox input {
+      width: 16px;
+      height: 16px;
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 12px;
+      background: #e60012;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-bottom: 15px;
+    }
+
+    .login-btn:hover {
+      background: #c00;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background: white;
+      font-size: 0.8rem;
+      color: #666;
+      margin-top: 20px;
+    }
+
+    .footer a {
+      color: #666;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+
+    .footer a:hover {
+      color: #e60012;
+    }
+
+    .qrcode {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+      padding: 10px;
+      background: #f0f0f0;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      color: #666;
     }
   </style>
 </head>
 <body>
-  <h1>🎉 部署成功！</h1>
-  <p>这是通过 Cloudflare Pages 部署的静态网站</p>
-  <div class="footer">Powered by Cloudflare + GitHub</div>
+
+  <!-- 头部 -->
+  <header class="header">
+    <div class="logo">
+      <span style="font-size: 1.8rem;">M</span>
+      <span>阿里邮箱 企业版</span>
+    </div>
+    <nav class="nav">
+      <a href="#">钉钉官网</a>
+      <a href="#">阿里邮箱官网</a>
+      <a href="#">个人邮箱登录</a>
+      <a href="#">客户端</a>
+      <a href="#">帮助</a>
+      <a href="#">简体中文</a>
+    </nav>
+  </header>
+
+  <!-- 主体 -->
+  <main class="main">
+    <div class="left">
+      <img src="https://via.placeholder.com/200x100?text=阿里云" alt="阿里云" style="margin-bottom: 20px;">
+      <h1>39元AI建站，送.CN域名</h1>
+      <p>品牌官网，即刻上线</p>
+      <a href="#" class="btn">查看详情 →</a>
+    </div>
+
+    <div class="right">
+      <div class="tabs">
+        <div class="tab active">账号登录</div>
+        <div class="tab">钉钉账号登录</div>
+      </div>
+
+      <form>
+        <div class="form-group">
+          <label>邮箱</label>
+          <input type="email" class="form-control" placeholder="yanshi@cs.tinf.s.cn" value="yanshi@cs.tinf.s.cn" />
+        </div>
+
+        <div class="form-group">
+          <label>密码</label>
+          <input type="password" class="form-control" placeholder="输入密码" />
+        </div>
+
+        <div class="checkbox">
+          <input type="checkbox" checked />
+          <span>记住用户名</span>
+          <span style="margin-left: auto; font-size: 0.8rem;">忘记密码</span>
+        </div>
+
+        <button type="submit" class="login-btn">登录</button>
+
+        <div class="checkbox">
+          <input type="checkbox" />
+          <span>已阅读并同意：<a href="#">隐私政策</a>、<a href="#">产品服务协议</a></span>
+        </div>
+      </form>
+
+      <div class="qrcode">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <img src="https://via.placeholder.com/30x30?text=M" alt="Logo" style="width: 30px;" />
+          <span>阿里邮箱扫码登录</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 底部 -->
+  <footer class="footer">
+    <div><strong>关于我们</strong></div>
+    <div>
+      <a href="#">阿里云</a>
+      <a href="#">钉钉</a>
+      <a href="#">万网</a>
+      <a href="#">支付宝</a>
+      <a href="#">阿里巴巴集团</a>
+      <a href="#">开发者社区</a>
+      <a href="#">帮助中心</a>
+      <a href="#">阿里邮箱个人版</a>
+      <a href="#">邮件推送</a>
+      <a href="#">DingTalk</a>
+    </div>
+    <div>2009-2025 Aliyun.com 版权所有 ICP证：浙B2-20080101</div>
+  </footer>
+
 </body>
 </html>
