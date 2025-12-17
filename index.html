@@ -1,52 +1,189 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>今天试试公司</title>
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: "Microsoft YaHei", sans-serif;
-      background: url('https://www.gxgif.com/pic/fj/202512720139.jpg') no-repeat center/cover;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
+      padding: 0;
+      box-sizing: border-box;
     }
-    .header, .login-box {
-      background: rgba(255,255,255,0.8);
-      padding: 10px;
-      text-align: center;
+    body {
+      font-family: "Microsoft YaHei", sans-serif;
+      min-height: 100vh;
+      background-image: url('https://www.gxgif.com/pic/fj/202512720139.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: #333;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+      background: transparent;
+      position: relative;
+      z-index: 10;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+    }
+    .logo span {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #003366;
+    }
+    .nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #666;
+      font-size: 0.9rem;
+    }
+    .nav a:hover {
+      color: #e60012;
+    }
+    .main {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      min-height: 600px;
+      padding: 60px 0;
     }
     .login-box {
-      max-width: 360px;
-      margin: auto;
+      width: 360px;
+      background: white;
+      padding: 30px;
       border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      border: 1px solid #eee;
+    }
+    .tabs {
+      display: flex;
+      border-bottom: 1px solid #eee;
+      margin-bottom: 20px;
+    }
+    .tab {
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: #666;
+      border-bottom: 2px solid transparent;
+    }
+    .tab.active {
+      color: #e60012;
+      border-bottom: 2px solid #e60012;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-control {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    .checkbox {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 15px;
     }
     .login-btn {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       background: #e60012;
       color: white;
       border: none;
       border-radius: 4px;
+      font-size: 1rem;
       cursor: pointer;
+      margin-bottom: 15px;
+    }
+    .scan-login {
+      text-align: center;
+      margin-top: 20px;
+      padding-top: 15px;
+      border-top: 1px solid #eee;
+    }
+    .scan-login img {
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
+    }
+    @media (max-width: 768px) {
+      .main {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+      }
+      .login-box {
+        width: 100%;
+        max-width: 360px;
+        margin-top: 20px;
+      }
     }
   </style>
 </head>
 <body>
-<header class="header">
-  <img src="https://via.placeholder.com/60x60?text=今天试试公司" alt="Logo" style="vertical-align: middle;"/>
-  <span style="font-size:1.4rem; font-weight:bold;">今天试试公司</span>
-</header>
-<div class="login-box">
-  <h2>账号登录</h2>
-  <form>
-    <input type="email" placeholder="企业邮箱或管理员账号" required style="width:100%;padding:10px;margin-bottom:10px;border-radius:4px;border:1px solid #ddd;">
-    <input type="password" placeholder="密码" required style="width:100%;padding:10px;margin-bottom:10px;border-radius:4px;border:1px solid #ddd;">
-    <label><input type="checkbox"> 记住用户名</label>
-    <button type="submit" class="login-btn">登录</button>
-  </form>
+<div class="container">
+  <header class="header">
+    <div class="logo">
+      <img src="https://via.placeholder.com/60x60?text=今天试试公司" alt="Logo" />
+      <span>今天试试公司</span>
+    </div>
+    <nav class="nav">
+      <a href="#">客户端</a>
+      <a href="#">帮助</a>
+      <a href="#">简体中文</a>
+    </nav>
+  </header>
+  <main class="main">
+    <div class="login-box">
+      <div class="tabs">
+        <div class="tab active">账号登录</div>
+        <div class="tab">钉钉账号登录</div>
+      </div>
+      <form>
+        <div class="form-group">
+          <input type="email" class="form-control" placeholder="输入完整的企业邮箱或管理员账号" />
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" placeholder="输入密码" />
+          <span style="position: absolute; right: 10px; top: 10px; font-size: 12px;">👁️</span>
+        </div>
+        <div class="checkbox">
+          <input type="checkbox" checked />
+          <span>记住用户名</span>
+          <span style="margin-left: auto; font-size: 0.8rem;">忘记密码</span>
+        </div>
+        <button type="submit" class="login-btn">登录</button>
+        <div class="checkbox">
+          <input type="checkbox" />
+          <span>已阅读并同意：<a href="#">隐私政策</a>、<a href="#">产品服务协议</a></span>
+        </div>
+      </form>
+      <div class="scan-login">
+        <img src="https://via.placeholder.com/30x30?text=M" alt="M" />
+        <span>阿里邮箱扫码登录</span>
+      </div>
+    </div>
+  </main>
 </div>
 </body>
 </html>
